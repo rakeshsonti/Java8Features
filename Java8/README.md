@@ -113,7 +113,7 @@ public class RunnableExample {
 }
 ````
 -----------------------------------------------------------------------------------------
-
+[Official Oracle Site for functional Interface](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
 Functional Interface
 ````
   package io.java8.features.typereference;
