@@ -629,7 +629,88 @@ public class MethodRefrence {
 	// step 2 create a method that print all element of list java - Method refrence
 		performAllConditionaly(people, p -> true, System.out::println);
 ---------------------------------------------------------------------------------------------------------------------	
+Collection Iteration
+``
+	package io.java8.features.Collections;
 
-	
+import java.util.Arrays;
+import java.util.List;
+
+
+
+/**
+ * @author Rakesh Sonti 19-Feb-2023 - 1:18:25 am
+ */
+public class CollectionIeration {
+	public static void main(String[] args) {
+		List<Person> people = Arrays.asList(new Person("Ram", "Sonti", 12), new Person("Ranu", "Sharma", 34),
+				new Person("Kiran", "Chain", 35), new Person("Pinku", "Sutar", 40), new Person("CRani", "Stark", 56));
+		
+		for(int i=0;i<people.size();i++)System.out.println(people.get(i));
+		
+		System.out.println("-----------------------------------------------------------------");
+		for(Person p:people)System.out.println(p);
+		
+		System.out.println("-----------------------------------------------------------------");
+		people.forEach(p->System.out.println(p));
+		
+		System.out.println("------Method reference-----------------------------------------------------------");
+		people.forEach(System.out::println);
+		
+		
+		
+	}
+}
+class Person {
+	private String firstName;
+	private String lastName;
+	private int age;
+
+	@Override
+	public String toString() {
+		return "Person [" + (firstName != null ? "firstName=" + firstName + ", " : "")
+				+ (lastName != null ? "lastName=" + lastName + ", " : "") + "age=" + age + "]";
+	}
+
+	public Person() {
+		super();
+	}
+
+	public Person(String firstName, String lastName, int age) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+}
+
+``
+---------------------------------------------------------------------------------------------------------------------
+
 	
 	
