@@ -63,7 +63,7 @@ interface MyInterface{
 
 }
 ````
---------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
  ````
  package io.java8.features.typereference;
 
@@ -87,7 +87,7 @@ public class TypeReference {
 
  ````
   
- ----------------------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------------------------------------------
  ````
   package io.java8.features.typereference;
 
@@ -136,8 +136,130 @@ public class RunnableExample {
 	}
 }
 ````
- -----------------------------------------------------------------------------------------------------
-  
+ -----------------------------------------------Java 7 sort v Java 8 Sort------------------------------------------------------
+  Sort with comparator
+  ````
+  package io.java8.features.typereference;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 2:18:07 pm
+ */
+
+public class RunnableExample {
+	public static void main(String[] args) {
+		List<Person> people=Arrays.asList(
+				new Person("Ram","Sonti",12),
+				new Person("Ranu","Sharma",34),
+				new Person("Kiran","Chain",35),
+				new Person("Pinku","Sutar",40),
+				new Person("CRani","Stark",56)
+				);
+			//step - 1 sort list by last name java -7
+			Collections.sort(people, new Comparator<Person>() {
+				@Override
+				public int compare(Person o1, Person o2) {
+					return o1.getLastName().compareTo(o2.getLastName());
+				}
+
+			});
+			//step 2 create a method that print all element of list java -7
+			printAll(people);
+			//step 3 create a method that print all people that have last name begin with c java -7
+			printLastNameBeginWithC(people);
+			System.out.println("--------------------------------new cond-------------");
+			printLastNameBeginWithCondition(people,new Condition() {
+
+				@Override
+				public boolean test(Person p) {
+					return p.getLastName().startsWith("C");
+				}
+				
+			});
+			System.out.println("--------------------------------new cond-------------");
+
+			printLastNameBeginWithCondition(people,new Condition() {
+				
+				@Override
+				public boolean test(Person p) {
+					return p.getFirstName().startsWith("C");
+				}
+				
+			});
+		
+		
+	}
+	private static void printLastNameBeginWithCondition(List<Person> people,Condition cd) {
+		for(Person p:people) {
+			if(cd.test(p))
+			System.out.println(p.toString());
+		}
+	}
+	private static void printLastNameBeginWithC(List<Person> people) {
+		for(Person p:people) {
+			if(p.getLastName().startsWith("C"))
+				System.out.println(p.toString());
+		}
+	}
+	private static void printAll(List<Person> people) {
+		for(Person p:people) {
+			System.out.println(p.toString());
+		}
+	}
+	interface Condition{
+		boolean test(Person p);
+	}
+	@FunctionalInterface 
+	interface MyInterface{
+		int getAdd(int num1,int num2);
+	}
+}
+class Person{
+	private String firstName;
+	private String lastName;
+	private int age;
+	
+	@Override
+	public String toString() {
+		return "Person [" + (firstName != null ? "firstName=" + firstName + ", " : "")
+				+ (lastName != null ? "lastName=" + lastName + ", " : "") + "age=" + age + "]";
+	}
+	public Person() {
+		super();
+	}
+	public Person(String firstName, String lastName, int age) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+}
+
+````	
+--------------------------------------------------------------------------------------------
   
   
   
