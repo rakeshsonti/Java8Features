@@ -259,6 +259,93 @@ class Person{
 }
 
 ````	
+Java 8 solution with lambda expression for above code
+````
+package io.java8.features.typereference;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 2:18:07 pm
+ */
+
+public class RunnableExample {
+	public static void main(String[] args) {
+		List<Person> people=Arrays.asList(
+				new Person("Ram","Sonti",12),
+				new Person("Ranu","Sharma",34),
+				new Person("Kiran","Chain",35),
+				new Person("Pinku","Sutar",40),
+				new Person("CRani","Stark",56)
+				);
+			//step - 1 sort list by last name java -8 use lambda class instead of inner anonymous class
+			Collections.sort(people, (o1,o2)->o1.getLastName().compareTo(o2.getLastName()));
+			//step 2 create a method that print all element of list java -
+			printAllConditionaly(people,p->true);
+			//step 3 create a method that print all people that have last name begin with c java -7
+			System.out.println("--------------------------------new cond-------------");
+			printAllConditionaly(people,p->p.getLastName().startsWith("C"));
+			System.out.println("--------------------------------new cond-------------");
+
+			printAllConditionaly(people,p->p.getFirstName().startsWith("C"));
+		
+		
+	}
+	private static void printAllConditionaly(List<Person> people,Condition cd) {
+		for(Person p:people) {
+			if(cd.test(p))
+			System.out.println(p.toString());
+		}
+	}
+
+
+	interface Condition{
+		boolean test(Person p);
+	}
+	
+}
+class Person{
+	private String firstName;
+	private String lastName;
+	private int age;
+	
+	@Override
+	public String toString() {
+		return "Person [" + (firstName != null ? "firstName=" + firstName + ", " : "")
+				+ (lastName != null ? "lastName=" + lastName + ", " : "") + "age=" + age + "]";
+	}
+	public Person() {
+		super();
+	}
+	public Person(String firstName, String lastName, int age) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+}
+````
 --------------------------------------------------------------------------------------------
   
   
