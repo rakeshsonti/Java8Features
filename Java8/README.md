@@ -18,7 +18,20 @@
   16. JDBC Enhancements etc.
   
   ------------------------------------------------------------------------------------------------------------------
-  
+ why lambda
+enable functional programming
+readable and concise code
+eliminate boiler plate code
+easier to use API and libraies
+enable support for parallel processing
+
+OOP
+everything is OBject
+all code associated with classes and object
+
+//for single lambda expression no need to write the return keywpord
+ 
+---------------------------------------------------------------------------------------------------------
   **Lambda expressions: :raised_eyebrow: **- 
   ````
   package io.java8.features.lambda;
@@ -75,6 +88,7 @@ public class TypeReference {
  ````
   
  ----------------------------------------------------------------------------------------------
+ ````
   package io.java8.features.typereference;
 
 /**
@@ -97,9 +111,32 @@ public class RunnableExample {
 	mythread2.run();
 }
 }
+````
 -----------------------------------------------------------------------------------------
-  
-  
+
+Functional Interface
+````
+  package io.java8.features.typereference;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 2:18:07 pm
+ */
+public class RunnableExample {
+	public static void main(String[] args) {
+		// Functional Interface :- there should be at most one abstract method
+		// Use @FunctionalInterface to restrict user to create more than one abstract method
+		MyInterface obj=(a,b)->a+b;
+		System.out.println(obj.getAdd(23, 34));
+		
+	}
+	@FunctionalInterface
+	interface MyInterface{
+		int getAdd(int num1,int num2);
+//		int getLength();
+	}
+}
+````
+ -----------------------------------------------------------------------------------------------------
   
   
   
