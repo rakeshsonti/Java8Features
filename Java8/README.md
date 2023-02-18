@@ -602,8 +602,34 @@ public class ThisReferenceExample {
 
 ````	
 ---------------------------------------------------------------------------------------------------------------------	
-	
-	
+Method References
+``
+	package io.java8.features.MethodRefences;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 10:59:53 pm
+ */
+public class MethodRefrence {
+
+	public static void main(String[] args) {
+//		Thread th=new Thread(()->printMessage()); //lambda way
+		Thread th=new Thread(MethodRefrence::printMessage);
+		th.start();
+	}
+	public static void printMessage() {
+		System.out.println("Hello");
+		
+	}
+
+}
+
+
+``	
+---------------------------------------------------------------------------------------------------------------------	
+	// step 2 create a method that print all element of list java - Method refrence
+		performAllConditionaly(people, p -> true, System.out::println);
+---------------------------------------------------------------------------------------------------------------------	
+
 	
 	
 	
