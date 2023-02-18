@@ -346,7 +346,118 @@ class Person{
 	
 }
 ````
+	Any way we need to declare an interface which contains right method for our need
+	 Java.util.function has lots of predifined interfaces
+````	
+	Instead of COndition we can use Predicate which have test method
+	//Predicate is generic interface whose contains test method and generic type
+	private static void printAllConditionaly(List<Person> people,Predicate<Person> cd) {
+		for(Person p:people) {
+			if(cd.test(p))
+			System.out.println(p.toString());
+		}
+	}
+	Every time we need a abstract method in functional interface so that the method which we defined using anonymous class, can be used with that interface.
+	why we are using test which return boolena?
+	ans is pretty much simple printAllConditionaly method second argument is an function which return boolean based on condition so test is fit with all the method passed as an second arguments.We are calling that method later on inside the method.
+	
+````
+	
 --------------------------------------------------------------------------------------------
-  
+ Println using Consumer Functional interface
+````
+	package io.java8.features.typereference;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 2:18:07 pm
+ */
+
+public class RunnableExample {
+	public static void main(String[] args) {
+		List<Person> people = Arrays.asList(new Person("Ram", "Sonti", 12), new Person("Ranu", "Sharma", 34),
+				new Person("Kiran", "Chain", 35), new Person("Pinku", "Sutar", 40), new Person("CRani", "Stark", 56));
+
+		// step - 1 sort list by last name use lambda class instead of inner anonymous
+		// class
+		Collections.sort(people, (o1, o2) -> o1.getLastName().compareTo(o2.getLastName()));
+
+		// step 2 create a method that print all element of list java -
+		performAllConditionaly(people, p -> true, p -> System.out.println(p));
+		System.out.println("--------------------------------new cond-------------");
+
+		// step 3 create a method that print all people that have last name begin with c
+		performAllConditionaly(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p.getFirstName()));
+		System.out.println("--------------------------------new cond-------------");
+		performAllConditionaly(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p.getLastName()));
+
+	}
+
+	// Consumer is generic interface whose contains accept method whose return
+	// nothing just accept the argumant
+	private static void performAllConditionaly(List<Person> people, Predicate<Person> pd, Consumer<Person> consumer) {
+		for (Person p : people) {
+			if (pd.test(p))
+				consumer.accept(p);
+		}
+	}
+}
+
+class Person {
+	private String firstName;
+	private String lastName;
+	private int age;
+
+	@Override
+	public String toString() {
+		return "Person [" + (firstName != null ? "firstName=" + firstName + ", " : "")
+				+ (lastName != null ? "lastName=" + lastName + ", " : "") + "age=" + age + "]";
+	}
+
+	public Person() {
+		super();
+	}
+
+	public Person(String firstName, String lastName, int age) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+}
+
+````
+	
+----------------------------------------------------------------------------------------------------------------------	
   
   
