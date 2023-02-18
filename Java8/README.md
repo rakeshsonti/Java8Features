@@ -459,5 +459,64 @@ class Person {
 ````
 	
 ----------------------------------------------------------------------------------------------------------------------	
+  Exception handling in Lambda Exression
+````
+	package io.java8.features.exception;
+
+import java.util.function.BiConsumer;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 8:05:20 pm
+ */
+public class ExceptionHandling {
+
+	/**
+	 *
+	 */
+	public static void main(String[] args) {
+		int arr[] = { 1, 2, 3, 4, 5, 6 };
+		int key = 0;
+		process(arr, key, wrapperLambda((val, keyy) -> System.out.println(val / keyy)));
+
+		// process(arr, key, (val, keyy) ->System.out.println(val / keyy));
+		/*
+		 * process(arr, key, (val, keyy) -> { try { System.out.println(val / keyy); }
+		 * catch (Exception ex) { System.out.println(ex.getMessage()); } });
+		 */
+	}
+
+	private static BiConsumer<Integer, Integer> wrapperLambda(BiConsumer<Integer, Integer> consumer) {
+		return (val1, key1) -> {
+			try {
+				consumer.accept(val1, key1);
+			} catch (Exception ex) {
+				System.out.println(ex.getLocalizedMessage());
+			}
+		};
+	}
+
+	private static void process(int[] arr, int key, BiConsumer<Integer, Integer> consumer) {
+		for (int i : arr) {
+//			try {
+			consumer.accept(i, key);
+
+			/*
+			 * }catch(Exception ex) { //handle exception
+			 * System.out.println(ex.getMessage()); }
+			 */
+		}
+	}
+
+}
+
+
+````
+--------------------------------------------------------------------------------------------------------------------------
   
-  
+	
+	
+	
+	
+	
+	
+	
