@@ -512,9 +512,96 @@ public class ExceptionHandling {
 
 ````
 --------------------------------------------------------------------------------------------------------------------------
-  
+  Closure
+````
+package io.java8.features.closure;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 8:31:54 pm
+ */
+public class ClosureExample {
+	public static void main(String[] args) {
+		int a=10,b=20;
+		//closure exists here
+		doProcess(a,i->System.out.println(i+b));
+		//we are using here but this method executing in doProcess but it still remember the value of b, this is called closure in functional programming
+		/*
+		doProcess(a,new Process() {
+
+			@Override
+			public void process(int i) {
+				System.out.println(i+b);
+			}
+			
+		});
+		*/
+	}
+	public static void doProcess(int i,Process p) {
+		p.process(i);
+	}
+}
+
+interface Process {
+	void process(int i);
+}
+
+````
+---------------------------------------------------------------------------------------------------------------------------
 	
-	
+This
+````
+	package io.java8.features.closure;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 8:31:54 pm
+ */
+public class ThisReferenceExample {
+	//In case of anonymous inner class this value changed but in case of lambda doesn't
+	public void exdcuteMethod() {
+		doProcess(10, i->{
+			System.out.println("Value of i is: "+i);
+			System.out.println(this);//this will work and pointing to the ThisReferenceExample class
+		}) ;
+	}
+	public static void main(String[] args) {
+		ThisReferenceExample thisRef=new ThisReferenceExample();
+		thisRef.exdcuteMethod();
+		thisRef.doProcess(10, i->{
+			System.out.println("Value of i is: "+i);
+//			System.out.println(this);//showing error || Lambda does not touch this refrence
+		}) ;
+		/*
+		thisRef.doProcess(10, new Process() {
+
+			@Override
+			public void process(int i) {
+				System.out.println("Value of i is: "+i);
+				System.out.println(this);
+				//this belong to the inner anonymous class
+			}
+			public String toString() {
+				return "This is my to string methos";
+			}
+			
+		});
+		*/
+		
+	}
+	public void doProcess(int i,Process p) {
+		p.process(i);
+	}
+	public String toString() {
+		return "This is my to string method for outer";
+	}
+}
+
+
+  interface Process { void process(int i); }
+ 
+
+
+````	
+---------------------------------------------------------------------------------------------------------------------	
 	
 	
 	
