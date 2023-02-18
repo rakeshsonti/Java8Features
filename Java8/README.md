@@ -74,8 +74,30 @@ public class TypeReference {
 
  ````
   
-  ----------------------------------------------------------------------------------------------
-  
+ ----------------------------------------------------------------------------------------------
+  package io.java8.features.typereference;
+
+/**
+ * @author Rakesh Sonti 18-Feb-2023 - 2:18:07 pm
+ */
+public class RunnableExample {
+	public static void main(String[] args) {
+		//anonymous inner class example without lambda
+	Thread mythread=new Thread(new Runnable() {
+		
+		@Override
+		public void run() {
+			System.out.println("Run method invoked....");
+		}
+	});
+	mythread.run();
+	//implement thread using lambda expression || java Old code still work if we are using interface instead of Function type
+	//This called functional interfaces
+	Thread mythread2=new Thread(()->System.out.println("Run method invoked1...."));
+	mythread2.run();
+}
+}
+-----------------------------------------------------------------------------------------
   
   
   
