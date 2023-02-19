@@ -629,9 +629,10 @@ public class MethodRefrence {
 	// step 2 create a method that print all element of list java - Method refrence
 		performAllConditionaly(people, p -> true, System.out::println);
 ---------------------------------------------------------------------------------------------------------------------	
-Collection Iteration
-``
-	package io.java8.features.Collections;
+ Collection Iteration
+
+````
+package io.java8.features.Collections;
 
 import java.util.Arrays;
 import java.util.List;
@@ -708,8 +709,7 @@ class Person {
 	}
 
 }
-
-``
+````
 ---------------------------------------------------------------------------------------------------------------------
 
 	
