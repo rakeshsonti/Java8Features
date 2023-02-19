@@ -68,6 +68,38 @@ interface Tire {
 }
 ````
 ------------------------------------------------------------------------------------------------------------------------
+### Stream 
+
+> Stream: is an API introduced in java 8 to process collection data. In stream for processing the data we use filter,map.... etc method which internally use lambda expression
+
+>Stream: to process the data from collection we use stream concepts.
+
+> Collection: to represent group of data/objects as single entity . e.g. HashMap ,Set,List etc.
+* **Map->** Apply some opration on stored collection data and performe some operation and store data in other collection for some purpose. Data can not be reduced
+
+* **Filter->** Apply some condition and put data into some other collection for some purpose. Data may be reduced 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
