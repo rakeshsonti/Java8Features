@@ -43,7 +43,18 @@ vehicle show..
 ````
 ------------------------------------------------------------------------------------------------------------------------
 > We can't override the method in interface which is available in **Object class**
-
+````
+interface Tire {
+	//showing error
+	default boolean equals(Object obj)
+		return false;
+		
+	}
+	default void show() {
+		System.out.println("Tire show..");
+	};
+}
+````
 ------------------------------------------------------------------------------------------------------------------------
 
 
