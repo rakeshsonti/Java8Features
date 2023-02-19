@@ -5,6 +5,7 @@
 * As we know one class can implement multiple interfaces. If both the interface defined the same default method then class need to defined the method
 * class method has more priority than method of interface
 * class A implement X has show(); X has show() method and B class extends A now if B call show() method . It will be called from A not X
+* if A class don't have show then it will call interface method A
 
 -----------------------------------------------------------------------------------------------------------------------
 
@@ -40,9 +41,10 @@ interface Tire {
 vehicle show..
 
 ````
+------------------------------------------------------------------------------------------------------------------------
+> We can't override the method in interface which is available in **Object class**
 
-
-
+------------------------------------------------------------------------------------------------------------------------
 
 
 
