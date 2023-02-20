@@ -764,8 +764,30 @@ public Driver{
 	
 ````
 ----------------------------------------------------------------------------------------------------------------------
-	
-	
+Genralization
+
+````
+	package com.stream.api;
+
+/**
+ * @author Rakesh Sonti 19-Feb-2023 - 3:21:44 pm
+ */
+public class CollectionsAPI {
+	public static void add(Integer i, Integer j, Operation op) {
+		System.out.println(op.opt(i, j));
+	}
+
+	public static void main(String[] args) {
+		add(23, 45, (a, b) -> (a - b));
+	}
+}
+
+interface Operation {
+	public Integer opt(Integer i, Integer j);
+}
+
+````
+----------------------------------------------------------------------------------------------------------------------	
 	
 	
 	
