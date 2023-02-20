@@ -779,6 +779,12 @@ public class CollectionsAPI {
 
 	public static void main(String[] args) {
 		add(23, 45, (a, b) -> (a - b));
+	
+		/*Operation op=(a,b)->(a+b);
+		 * op.add(2,3);
+		 * 
+		 * 
+		 */
 	}
 }
 
