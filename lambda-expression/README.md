@@ -711,6 +711,62 @@ class Person {
 }
 ````
 ---------------------------------------------------------------------------------------------------------------------
+#### Note:
+	
+> infer - automatic detect the type
 
+> anonymous class: Class with no name
+
+````
+MyInterface my=new MyInterface(){
+	
+	@Override
+	public void show(){
+		System.out.println("Hellow");
+	}
+}
+	
+//No need to write new key just jump to the method name and remove method name type and put -> after paranthesis and need functional interface instead of simple interface
+MyInterface my=()->{
+		System.out.println("Hellow");
+	}
+	
+
+````
+
+By Lambda
+Collection.sort(list,(Employee e1,Employee e2)->{
+	e1.getName().compareTo(e2.getName());
+});
+
+By Method reference
+Collection.sort(list,Comparatorcomparing(Employee::getName));
+````
+class Main{
+		public static void getName(){
+		System.out.println("My Name is ABC");
+		}
+		public int getAge(){
+		return 5;
+		}
+	}
+interface DoubleColon{
+	void show();
+	}
+public Driver{
+	public static void main(String args[]){
+	//if non static . call by method reference
+	DoubleColon dc=new Main::getAge();
+	//if static. call by method reference
+	DoubleColon dc=Main::getName();
+	}
+}
+	
+````
+----------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
 	
 	
